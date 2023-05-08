@@ -1,0 +1,34 @@
+# https://taskfile.dev
+
+version: '3'
+
+includes:
+  github: ./gh.taskfile.yml
+
+tasks:
+  default:
+    cmds:
+      - task: download_from_github
+        vars:
+          TASK_NAME: devenv
+
+      - task: download_from_github
+        vars:
+          TASK_NAME: direnv
+
+      - task: download_from_github
+        vars:
+          TASK_NAME: k3d
+
+      - task: download_from_github
+        vars:
+          TASK_NAME: cdk8s
+
+  download_from_github:
+    internal: true
+    cmds:
+      - task: github:download
+        vars: 
+          GITHUB_REPO: automation
+          GITHUB_PATH: tools/taskfiles/lib/{{.TASK_NAME}}.taskfile.yml
+          LOCAL_PATH: tools/taskfiles/lib/{{.TASK_NAME}}.taskfile.yml

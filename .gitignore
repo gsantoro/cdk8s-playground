@@ -1,0 +1,12 @@
+
+# Devenv
+.devenv*
+devenv.local.nix
+.direnv
+.env.private
+
+# 
+dist/
+
+## Automation taskfiles
+tools/taskfiles/lib/*.yml
